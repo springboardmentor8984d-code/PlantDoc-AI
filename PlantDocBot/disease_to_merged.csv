@@ -1,0 +1,31 @@
+Disease,merged_label
+apple scab,scab
+black rot,rot_mold
+cedar apple rust,rust
+healthy,healthy
+mummy berry,rot_mold
+leaf spot,leaf_spot
+powdery mildew,mildew
+brown rot,rot_mold
+cercospora leaf spot,leaf_spot
+common rust,rust
+northern leaf blight,blight
+haunglongbing,viral
+citrus canker,bacterial
+bacterial spot,bacterial
+peach leaf curl,curl
+early blight,blight
+late blight,blight
+common scab,bacterial
+anthracnose,rot_mold
+cane blight,rot_mold
+frogeye leaf spot,leaf_spot
+soybean rust,rust
+bacterial wilt,bacterial
+leaf scorch,leaf_spot
+gray mold,rot_mold
+leaf mold,mildew
+septoria leaf spot,leaf_spot
+target spot,leaf_spot
+tomato mosaic virus,viral
+tomato yellow leaf curl virus,viral
