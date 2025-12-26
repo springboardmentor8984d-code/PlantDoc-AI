@@ -1,0 +1,118 @@
+Plant,Disease,Symptoms,Treatment
+Tomato,Late Blight,"Water-soaked brown spots on leaves and fruit, leaves wilt quickly in humid conditions.","Remove infected leaves, avoid overhead irrigation, apply copper-based fungicide."
+Tomato,Early Blight,"Dark brown concentric spots on lower leaves, yellowing around spots.","Remove affected leaves, rotate crops, use Mancozeb or Chlorothalonil fungicide."
+Tomato,Leaf Curl,"Upward curling leaves, yellowing and stunted growth.","Control whiteflies, use resistant varieties, remove infected plants."
+Potato,Late Blight,"Dark lesions on leaves and stems, white fungal growth under leaves.","Apply fungicides like Metalaxyl, ensure good drainage."
+Potato,Black Scurf,"Black sclerotia on tuber surface, poor sprouting.","Treat tubers before planting, rotate with non-host crops."
+Rice,Bacterial Leaf Blight,"Yellowing at leaf tips spreading downward, wilting in severe cases.","Use disease-free seeds, apply copper fungicide, ensure good field drainage."
+Rice,Sheath Blight,Oval lesions on leaf sheaths near waterline.,"Improve air circulation, apply validamycin or carbendazim."
+Wheat,Rust,"Orange-brown pustules on leaves, reduced grain filling.","Plant resistant varieties, apply Mancozeb or Propiconazole."
+Wheat,Powdery Mildew,White powdery growth on upper leaf surfaces.,"Use sulfur spray or triazole fungicide, avoid excessive nitrogen."
+Maize,Downy Mildew,"Yellowing and stunting, white downy growth on leaves.","Use resistant hybrids, spray metalaxyl."
+Maize,Leaf Blight,Elongated brown lesions on leaves causing drying.,Crop rotation and Mancozeb spray recommended.
+Cotton,Boll Rot,"Bolls become dark, mushy, and rot internally.","Improve field drainage, avoid injury to bolls, use copper fungicide."
+Cotton,Leaf Curl Virus,"Curling and thickening of leaves, stunted plants.","Control whiteflies, remove infected plants."
+Apple,Scab,Olive-green or brown spots on leaves and fruit.,"Prune infected twigs, apply sulfur-based fungicide during early spring."
+Apple,Powdery Mildew,White powdery growth on leaves and buds.,"Prune affected shoots, spray with sulfur fungicide."
+Mango,Anthracnose,"Black spots on leaves, twigs, and fruits.",Spray copper oxychloride or carbendazim during flowering.
+Mango,Powdery Mildew,White powdery growth on inflorescence and leaves.,Apply sulfur or tridemorph fungicide.
+Banana,Panama Disease,"Yellowing and wilting of leaves, dark vascular tissues.","Use resistant varieties, improve soil drainage, avoid contaminated tools."
+Banana,Sigatoka Leaf Spot,"Dark streaks on leaves, reduced fruit yield.","Remove infected leaves, apply Mancozeb or Propiconazole."
+Grapes,Downy Mildew,"Oily spots on leaves turning brown, white downy growth underneath.","Spray copper fungicide, ensure good ventilation."
+Grapes,Powdery Mildew,White patches on leaves and berries.,Apply sulfur dust or triazole fungicide.
+Chili,Leaf Curl,"Upward curling of leaves, mosaic-like pattern.","Control whiteflies, use virus-resistant varieties."
+Chili,Anthracnose,Dark sunken lesions on fruits.,Spray Carbendazim or Copper oxychloride.
+Soybean,Rust,Reddish-brown pustules on lower leaf surfaces.,"Use resistant varieties, apply fungicide before flowering."
+Soybean,Bacterial Blight,Water-soaked angular spots turning brown.,"Use clean seeds, avoid overhead irrigation."
+Cabbage,Black Rot,V-shaped yellow lesions on leaf margins.,"Use disease-free seedlings, rotate crops."
+Cabbage,Downy Mildew,"Yellow patches on leaves, white fluffy growth below.",Spray Mancozeb or Copper fungicide.
+Carrot,Alternaria Leaf Blight,Brown spots with yellow halos on leaves.,"Use certified seeds, apply fungicide sprays."
+Onion,Purple Blotch,Purple lesions on leaves and stalks.,Spray Mancozeb or Chlorothalonil.
+Groundnut,Leaf Spot,Circular brown lesions with yellow halos.,Spray with Mancozeb or Tebuconazole.
+Sugarcane,Red Rot,"Red streaks in internodes, foul smell.","Use resistant varieties, remove infected clumps."
+Papaya,Ring Spot Virus,Dark green concentric rings on fruits and leaves.,"Control aphids, remove infected plants."
+Pomegranate,Bacterial Blight,"Oozing lesions on fruit, leaf spots.",Spray copper fungicide and prune infected branches.
+Lemon,Canker,Corky raised lesions on leaves and fruit.,"Use copper sprays, remove infected twigs."
+Coconut,Bud Rot,"Rotting of bud, foul smell, death of crown.",Apply Bordeaux mixture and improve drainage.
+Tea,Blister Blight,Water-soaked spots on leaves forming blisters.,Spray copper fungicide every 15 days.
+Coffee,Leaf Rust,Orange powdery spots under leaves.,Apply copper fungicide and prune infected branches.
+Pepper,Phytophthora Blight,"Dark lesions on stems and leaves, fruit rot.","Improve drainage, apply metalaxyl."
+Okra,Yellow Vein Mosaic,"Yellow veins on leaves, reduced fruiting.","Control whiteflies, use resistant varieties."
+Tomato,Late Blight,"Water-soaked brown spots on leaves and fruit, leaves wilt quickly in humid conditions.","Remove infected leaves, avoid overhead irrigation, apply copper-based fungicide."
+Tomato,Early Blight,"Dark brown concentric spots on lower leaves, yellowing around spots.","Remove affected leaves, rotate crops, use Mancozeb or Chlorothalonil fungicide."
+Tomato,Leaf Curl,"Upward curling leaves, yellowing and stunted growth.","Control whiteflies, use resistant varieties, remove infected plants."
+Potato,Late Blight,"Dark lesions on leaves and stems, white fungal growth under leaves.","Apply fungicides like Metalaxyl, ensure good drainage."
+Potato,Black Scurf,"Black sclerotia on tuber surface, poor sprouting.","Treat tubers before planting, rotate with non-host crops."
+Rice,Bacterial Leaf Blight,"Yellowing at leaf tips spreading downward, wilting in severe cases.","Use disease-free seeds, apply copper fungicide, ensure good field drainage."
+Rice,Sheath Blight,Oval lesions on leaf sheaths near waterline.,"Improve air circulation, apply validamycin or carbendazim."
+Wheat,Rust,"Orange-brown pustules on leaves, reduced grain filling.","Plant resistant varieties, apply Mancozeb or Propiconazole."
+Wheat,Powdery Mildew,White powdery growth on upper leaf surfaces.,"Use sulfur spray or triazole fungicide, avoid excessive nitrogen."
+Maize,Downy Mildew,"Yellowing and stunting, white downy growth on leaves.","Use resistant hybrids, spray metalaxyl."
+Maize,Leaf Blight,Elongated brown lesions on leaves causing drying.,Crop rotation and Mancozeb spray recommended.
+Cotton,Boll Rot,"Bolls become dark, mushy, and rot internally.","Improve field drainage, avoid injury to bolls, use copper fungicide."
+Cotton,Leaf Curl Virus,"Curling and thickening of leaves, stunted plants.","Control whiteflies, remove infected plants."
+Apple,Scab,Olive-green or brown spots on leaves and fruit.,"Prune infected twigs, apply sulfur-based fungicide during early spring."
+Apple,Powdery Mildew,White powdery growth on leaves and buds.,"Prune affected shoots, spray with sulfur fungicide."
+Mango,Anthracnose,"Black spots on leaves, twigs, and fruits.",Spray copper oxychloride or carbendazim during flowering.
+Mango,Powdery Mildew,White powdery growth on inflorescence and leaves.,Apply sulfur or tridemorph fungicide.
+Banana,Panama Disease,"Yellowing and wilting of leaves, dark vascular tissues.","Use resistant varieties, improve soil drainage, avoid contaminated tools."
+Banana,Sigatoka Leaf Spot,"Dark streaks on leaves, reduced fruit yield.","Remove infected leaves, apply Mancozeb or Propiconazole."
+Grapes,Downy Mildew,"Oily spots on leaves turning brown, white downy growth underneath.","Spray copper fungicide, ensure good ventilation."
+Grapes,Powdery Mildew,White patches on leaves and berries.,Apply sulfur dust or triazole fungicide.
+Chili,Leaf Curl,"Upward curling of leaves, mosaic-like pattern.","Control whiteflies, use virus-resistant varieties."
+Chili,Anthracnose,Dark sunken lesions on fruits.,Spray Carbendazim or Copper oxychloride.
+Soybean,Rust,Reddish-brown pustules on lower leaf surfaces.,"Use resistant varieties, apply fungicide before flowering."
+Soybean,Bacterial Blight,Water-soaked angular spots turning brown.,"Use clean seeds, avoid overhead irrigation."
+Cabbage,Black Rot,V-shaped yellow lesions on leaf margins.,"Use disease-free seedlings, rotate crops."
+Cabbage,Downy Mildew,"Yellow patches on leaves, white fluffy growth below.",Spray Mancozeb or Copper fungicide.
+Carrot,Alternaria Leaf Blight,Brown spots with yellow halos on leaves.,"Use certified seeds, apply fungicide sprays."
+Onion,Purple Blotch,Purple lesions on leaves and stalks.,Spray Mancozeb or Chlorothalonil.
+Groundnut,Leaf Spot,Circular brown lesions with yellow halos.,Spray with Mancozeb or Tebuconazole.
+Sugarcane,Red Rot,"Red streaks in internodes, foul smell.","Use resistant varieties, remove infected clumps."
+Papaya,Ring Spot Virus,Dark green concentric rings on fruits and leaves.,"Control aphids, remove infected plants."
+Pomegranate,Bacterial Blight,"Oozing lesions on fruit, leaf spots.",Spray copper fungicide and prune infected branches.
+Lemon,Canker,Corky raised lesions on leaves and fruit.,"Use copper sprays, remove infected twigs."
+Coconut,Bud Rot,"Rotting of bud, foul smell, death of crown.",Apply Bordeaux mixture and improve drainage.
+Tea,Blister Blight,Water-soaked spots on leaves forming blisters.,Spray copper fungicide every 15 days.
+Coffee,Leaf Rust,Orange powdery spots under leaves.,Apply copper fungicide and prune infected branches.
+Pepper,Phytophthora Blight,"Dark lesions on stems and leaves, fruit rot.","Improve drainage, apply metalaxyl."
+Okra,Yellow Vein Mosaic,"Yellow veins on leaves, reduced fruiting.","Control whiteflies, use resistant varieties."
+Tomato,Late Blight,"Water-soaked brown spots on leaves and fruit, leaves wilt quickly in humid conditions.","Remove infected leaves, avoid overhead irrigation, apply copper-based fungicide."
+Tomato,Early Blight,"Dark brown concentric spots on lower leaves, yellowing around spots.","Remove affected leaves, rotate crops, use Mancozeb or Chlorothalonil fungicide."
+Tomato,Leaf Curl,"Upward curling leaves, yellowing and stunted growth.","Control whiteflies, use resistant varieties, remove infected plants."
+Potato,Late Blight,"Dark lesions on leaves and stems, white fungal growth under leaves.","Apply fungicides like Metalaxyl, ensure good drainage."
+Potato,Black Scurf,"Black sclerotia on tuber surface, poor sprouting.","Treat tubers before planting, rotate with non-host crops."
+Rice,Bacterial Leaf Blight,"Yellowing at leaf tips spreading downward, wilting in severe cases.","Use disease-free seeds, apply copper fungicide, ensure good field drainage."
+Rice,Sheath Blight,Oval lesions on leaf sheaths near waterline.,"Improve air circulation, apply validamycin or carbendazim."
+Wheat,Rust,"Orange-brown pustules on leaves, reduced grain filling.","Plant resistant varieties, apply Mancozeb or Propiconazole."
+Wheat,Powdery Mildew,White powdery growth on upper leaf surfaces.,"Use sulfur spray or triazole fungicide, avoid excessive nitrogen."
+Maize,Downy Mildew,"Yellowing and stunting, white downy growth on leaves.","Use resistant hybrids, spray metalaxyl."
+Maize,Leaf Blight,Elongated brown lesions on leaves causing drying.,Crop rotation and Mancozeb spray recommended.
+Cotton,Boll Rot,"Bolls become dark, mushy, and rot internally.","Improve field drainage, avoid injury to bolls, use copper fungicide."
+Cotton,Leaf Curl Virus,"Curling and thickening of leaves, stunted plants.","Control whiteflies, remove infected plants."
+Apple,Scab,Olive-green or brown spots on leaves and fruit.,"Prune infected twigs, apply sulfur-based fungicide during early spring."
+Apple,Powdery Mildew,White powdery growth on leaves and buds.,"Prune affected shoots, spray with sulfur fungicide."
+Mango,Anthracnose,"Black spots on leaves, twigs, and fruits.",Spray copper oxychloride or carbendazim during flowering.
+Mango,Powdery Mildew,White powdery growth on inflorescence and leaves.,Apply sulfur or tridemorph fungicide.
+Banana,Panama Disease,"Yellowing and wilting of leaves, dark vascular tissues.","Use resistant varieties, improve soil drainage, avoid contaminated tools."
+Banana,Sigatoka Leaf Spot,"Dark streaks on leaves, reduced fruit yield.","Remove infected leaves, apply Mancozeb or Propiconazole."
+Grapes,Downy Mildew,"Oily spots on leaves turning brown, white downy growth underneath.","Spray copper fungicide, ensure good ventilation."
+Grapes,Powdery Mildew,White patches on leaves and berries.,Apply sulfur dust or triazole fungicide.
+Chili,Leaf Curl,"Upward curling of leaves, mosaic-like pattern.","Control whiteflies, use virus-resistant varieties."
+Chili,Anthracnose,Dark sunken lesions on fruits.,Spray Carbendazim or Copper oxychloride.
+Soybean,Rust,Reddish-brown pustules on lower leaf surfaces.,"Use resistant varieties, apply fungicide before flowering."
+Soybean,Bacterial Blight,Water-soaked angular spots turning brown.,"Use clean seeds, avoid overhead irrigation."
+Cabbage,Black Rot,V-shaped yellow lesions on leaf margins.,"Use disease-free seedlings, rotate crops."
+Cabbage,Downy Mildew,"Yellow patches on leaves, white fluffy growth below.",Spray Mancozeb or Copper fungicide.
+Carrot,Alternaria Leaf Blight,Brown spots with yellow halos on leaves.,"Use certified seeds, apply fungicide sprays."
+Onion,Purple Blotch,Purple lesions on leaves and stalks.,Spray Mancozeb or Chlorothalonil.
+Groundnut,Leaf Spot,Circular brown lesions with yellow halos.,Spray with Mancozeb or Tebuconazole.
+Sugarcane,Red Rot,"Red streaks in internodes, foul smell.","Use resistant varieties, remove infected clumps."
+Papaya,Ring Spot Virus,Dark green concentric rings on fruits and leaves.,"Control aphids, remove infected plants."
+Pomegranate,Bacterial Blight,"Oozing lesions on fruit, leaf spots.",Spray copper fungicide and prune infected branches.
+Lemon,Canker,Corky raised lesions on leaves and fruit.,"Use copper sprays, remove infected twigs."
+Coconut,Bud Rot,"Rotting of bud, foul smell, death of crown.",Apply Bordeaux mixture and improve drainage.
+Tea,Blister Blight,Water-soaked spots on leaves forming blisters.,Spray copper fungicide every 15 days.
+Coffee,Leaf Rust,Orange powdery spots under leaves.,Apply copper fungicide and prune infected branches.
+Pepper,Phytophthora Blight,"Dark lesions on stems and leaves, fruit rot.","Improve drainage, apply metalaxyl."
+Okra,Yellow Vein Mosaic,"Yellow veins on leaves, reduced fruiting.","Control whiteflies, use resistant varieties."
