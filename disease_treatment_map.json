@@ -1,0 +1,201 @@
+{
+  "Pepper__bell___Bacterial_spot": {
+    "description": "Bacterial spot affects pepper leaves causing dark, water-soaked lesions that turn brown.",
+    "treatment": [
+      "Spray Copper-based fungicide (once every 7–10 days).",
+      "Remove and destroy infected leaves.",
+      "Avoid overhead watering.",
+      "Use disease-free seeds."
+    ],
+    "prevention": [
+      "Rotate crops every 2–3 years.",
+      "Ensure good air circulation.",
+      "Avoid working with wet plants."
+    ]
+  },
+
+  "Pepper__bell___healthy": {
+    "description": "The plant is healthy.",
+    "treatment": ["No treatment needed."],
+    "prevention": [
+      "Water at the base of the plant.",
+      "Keep good spacing.",
+      "Follow regular fertilization schedule."
+    ]
+  },
+
+  "Potato___Early_blight": {
+    "description": "Fungal disease causing brown concentric circles on leaves.",
+    "treatment": [
+      "Apply Chlorothalonil or Mancozeb fungicide.",
+      "Remove infected leaves immediately.",
+      "Improve soil drainage."
+    ],
+    "prevention": [
+      "Avoid overhead watering.",
+      "Rotate crops yearly.",
+      "Apply mulch to reduce soil splash."
+    ]
+  },
+
+  "Potato___healthy": {
+    "description": "The plant is healthy.",
+    "treatment": ["No treatment required."],
+    "prevention": [
+      "Use certified seed potatoes.",
+      "Follow fertilization schedule.",
+      "Keep the field weed-free."
+    ]
+  },
+
+  "Potato___Late_blight": {
+    "description": "Severe fungal disease causing dark spots and white mold on leaves.",
+    "treatment": [
+      "Spray Copper Oxychloride or Mancozeb.",
+      "Destroy infected plant debris.",
+      "Ensure proper ventilation."
+    ],
+    "prevention": [
+      "Avoid wet foliage.",
+      "Plant resistant potato varieties.",
+      "Use drip irrigation."
+    ]
+  },
+
+  "Tomato_Target_Spot": {
+    "description": "Fungal disease causing circular target-like spots on tomato leaves and stems.",
+    "treatment": [
+      "Use Chlorothalonil or Copper fungicide.",
+      "Remove infected leaves.",
+      "Improve air circulation by pruning."
+    ],
+    "prevention": [
+      "Avoid wetting leaves.",
+      "Maintain proper spacing.",
+      "Rotate fields every year."
+    ]
+  },
+
+  "Tomato_Tomato_mosaic_virus": {
+    "description": "Viral disease causing mosaic patterns, leaf distortion, and stunted plants.",
+    "treatment": [
+      "No chemical cure. Remove infected plants immediately.",
+      "Disinfect tools with 10% bleach.",
+      "Wash hands before touching plants."
+    ],
+    "prevention": [
+      "Use virus-free seeds.",
+      "Control aphid population.",
+      "Avoid tobacco handling before touching plants."
+    ]
+  },
+
+  "Tomato_Tomato_YellowLeaf__Curl_Virus": {
+    "description": "Virus transmitted by whiteflies causing yellowing, curling leaves, and stunted growth.",
+    "treatment": [
+      "No cure; remove infected plants.",
+      "Control whiteflies using neem oil or insecticidal soap.",
+      "Use reflective mulches."
+    ],
+    "prevention": [
+      "Keep greenhouse insect-proof.",
+      "Use resistant varieties.",
+      "Avoid planting near old infected plants."
+    ]
+  },
+
+  "Tomato_Bacterial_spot": {
+    "description": "Bacterial disease causing dark spots on leaves and fruit.",
+    "treatment": [
+      "Apply Copper-based sprays weekly.",
+      "Remove infected leaves.",
+      "Avoid overhead irrigation."
+    ],
+    "prevention": [
+      "Use certified disease-free seeds.",
+      "Rotate crops every year.",
+      "Maintain field sanitation."
+    ]
+  },
+
+  "Tomato_Early_blight": {
+    "description": "Fungal disease causing brown rings on lower leaves.",
+    "treatment": [
+      "Apply Mancozeb or Chlorothalonil.",
+      "Prune affected leaves.",
+      "Improve airflow and sunlight exposure."
+    ],
+    "prevention": [
+      "Mulch the soil.",
+      "Avoid wetting leaves.",
+      "Rotate tomato crops every 2 years."
+    ]
+  },
+
+  "Tomato_healthy": {
+    "description": "The plant is healthy.",
+    "treatment": ["No treatment needed."],
+    "prevention": [
+      "Maintain nutrient balance.",
+      "Water at the base.",
+      "Keep plants spaced properly."
+    ]
+  },
+
+  "Tomato_Late_blight": {
+    "description": ["Fungal disease causing brown rings on lower leaves"],
+
+    "treatment": [
+      "Spray Copper fungicide or Mancozeb.",
+      "Destroy infected plants immediately.",
+      "Increase field ventilation."
+    ],
+    "prevention": [
+      "Avoid planting tomatoes during high humidity.",
+      "Rotate crops yearly.",
+      "Use resistant tomato varieties."
+    ]
+  },
+
+  "Tomato_Leaf_Mold": {
+    "description": "Fungal disease forming yellow patches on upper leaf and velvety mold underneath.",
+    "treatment": [
+      "Use Copper or Chlorothalonil fungicide.",
+      "Improve airflow by pruning.",
+      "Reduce humidity in greenhouse."
+    ],
+    "prevention": [
+      "Avoid overcrowding plants.",
+      "Use resistant seeds.",
+      "Ensure proper ventilation."
+    ]
+  },
+
+  "Tomato_Septoria_leaf_spot": {
+    "description": "Fungal disease causing small circular spots with dark borders.",
+    "treatment": [
+      "Spray Fungicides like Chlorothalonil.",
+      "Remove infected leaves.",
+      "Avoid overhead watering."
+    ],
+    "prevention": [
+      "Use mulch to prevent soil splash.",
+      "Rotate crops regularly.",
+      "Disinfect garden tools."
+    ]
+  },
+
+  "Tomato_Spider_mites_Two_spotted_spider_mite": {
+    "description": "Tiny pests that suck plant juices causing yellowing and webbing on leaves.",
+    "treatment": [
+      "Spray Neem oil weekly.",
+      "Use insecticidal soap.",
+      "Wash leaves with strong water spray to remove mites."
+    ],
+    "prevention": [
+      "Maintain humidity (mites hate moisture).",
+      "Introduce natural predators like ladybugs.",
+      "Avoid dusty conditions around plants."
+    ]
+  }
+}
