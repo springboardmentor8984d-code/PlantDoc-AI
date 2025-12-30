@@ -1,0 +1,36 @@
+# Ensure all text files use LF line endings in Git
+ text=auto eol=lf
+
+# Jupyter Notebooks
+.ipynb text eol=lf
+
+# Python scripts
+.py text eol=lf
+
+# Markdown and text files
+.md text eol=lf
+.txt text eol=lf
+
+# JSON or config files
+.json text eol=lf
+.yaml text eol=lf
+.yml text eol=lf
+
+# HTML  CSS  JS files
+.html text eol=lf
+.css text eol=lf
+.js text eol=lf
+
+# Windows-specific scripts
+.bat text eol=crlf
+
+# Binary files (do NOT change line endings)
+.h5 binary
+.png binary
+.jpg binary
+.jpeg binary
+.csv binary
+.xlsx binary
+.xls binary
+.zip binary
+.pkl binary
