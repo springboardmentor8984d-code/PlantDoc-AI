@@ -13,6 +13,11 @@ from utils.treatments import get_treatment
 
 st.set_page_config(
     page_title="PlantDoc Chatbot",
+from chatbot.chatbot_manager import ChatbotManager
+from knowledge_base.treatments import get_treatment, format_treatment_message
+
+st.set_page_config(
+    page_title="🌿 Plant Disease Chatbot",
     layout="centered",
     initial_sidebar_state="collapsed"
 )
