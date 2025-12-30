@@ -1,0 +1,147 @@
+Plant,Disease,Image_Count
+Apple,Apple scab,630
+Apple,Black rot,704
+Apple,Cedar apple rust,275
+Apple,Healthy,1733
+Apple,Mosaic virus,89
+Apple,Rust,245
+Apple,Scab,351
+Banana,Anthracnose,71
+Banana,Black streak,167
+Banana,Bunchy top,157
+Banana,Cigar end rot,60
+Banana,Cordana spot,55
+Banana,Panama disease,63
+Basil,Downy mildew,63
+Bean,Halo blight,56
+Bean,Mosaic virus,58
+Bean,Rust,115
+Blueberry,Anthracnose,42
+Blueberry,Botrytis blight,36
+Blueberry,Healthy,1619
+Blueberry,Mummy berry,47
+Blueberry,Rust,44
+Blueberry,Scorch,43
+Broccoli,Alternaria spot,65
+Broccoli,Downy mildew,29
+Broccoli,Ring spot,16
+Cabbage,Alternaria spot,63
+Cabbage,Black rot,131
+Cabbage,Downy mildew,84
+Carrot,Alternaria blight,60
+Carrot,Cavity spot,72
+Carrot,Cercospora blight,19
+Cauliflower,Alternaria spot,54
+Cauliflower,Bacterial soft rot,36
+Celery,Anthracnose,29
+Celery,Early blight,36
+Cherry,Healthy,911
+Cherry,Powdery mildew,1085
+Cherry,Spot,107
+Citrus,Canker,390
+Citrus,Greening disease,133
+Citrus,Haunglongbing (citrus greening),5507
+Coffee,Berry blotch,118
+Coffee,Black rot,7
+Coffee,Brown eye spot,20
+Coffee,Rust,159
+Corn,Blight,194
+Corn,Cercospora leaf spot gray leaf spot,513
+Corn,Common rust,1192
+Corn,Gray spot,174
+Corn,Healthy,1162
+Corn,Northern blight,130
+Corn,Northern leaf blight,985
+Corn,Rust,294
+Corn,Smut,202
+Cucumber,Angular spot,182
+Cucumber,Bacterial wilt,108
+Cucumber,Powdery mildew,189
+Eggplant,Cercospora spot,60
+Eggplant,Phomopsis fruit rot,46
+Eggplant,Phytophthora blight,33
+Garlic,Blight,92
+Garlic,Rust,106
+Ginger,Sheath blight,68
+Ginger,Spot,25
+Grape,Black rot,1381
+Grape,Downy mildew,281
+Grape,Esca (black measles),1383
+Grape,Healthy,498
+Grape,Leaf blight (isariopsis leaf spot),1076
+Grape,Roll disease,71
+Grape,Spot,91
+Lettuce,Downy mildew,84
+Lettuce,Mosaic virus,39
+Maple,Tar spot,114
+Peach,Anthracnose,13
+Peach,Bacterial spot,2297
+Peach,Brown rot,173
+Peach,Curl,182
+Peach,Healthy,472
+Peach,Rust,8
+Peach,Scab,78
+Pepper_bell,Bacterial spot,1073
+Pepper_bell,Blossom end rot,112
+Pepper_bell,Frogeye spot,31
+Pepper_bell,Healthy,1520
+Pepper_bell,Powdery mildew,28
+Pepper_bell,Spot,83
+Plum,Bacterial spot,16
+Plum,Brown rot,81
+Plum,Pocket disease,57
+Plum,Pox virus,33
+Plum,Rust,34
+Potato,Early blight,1297
+Potato,Healthy,152
+Potato,Late blight,1325
+Raspberry,Fire blight,34
+Raspberry,Gray mold,40
+Raspberry,Healthy,490
+Raspberry,Spot,19
+Raspberry,Yellow rust,37
+Rice,Blast,83
+Rice,Sheath blight,76
+Soybean,Bacterial blight,91
+Soybean,Brown spot,71
+Soybean,Downy mildew,153
+Soybean,Frog eye spot,238
+Soybean,Healthy,5155
+Soybean,Mosaic,117
+Soybean,Rust,118
+Squash,Bacterial wilt,81
+Squash,Downy mildew,45
+Squash,Powdery mildew,2370
+Squash,Yellow mosaic virus,95
+Strawberry,Anthracnose,58
+Strawberry,Healthy,552
+Strawberry,Leaf scorch,1109
+Strawberry,Scorch,39
+Tobacco,Blue mold,60
+Tobacco,Brown spot,66
+Tobacco,Frogeye spot,28
+Tobacco,Mosaic virus,41
+Tomato,Bacterial spot,2347
+Tomato,Early blight,1275
+Tomato,Healthy,1643
+Tomato,Late blight,2183
+Tomato,Leaf mold,952
+Tomato,Mold,247
+Tomato,Mosaic virus,117
+Tomato,Septoria leaf spot,1771
+Tomato,Septoria spot,287
+Tomato,Spider mites two-spotted spider mite,1676
+Tomato,Target spot,1404
+Tomato,Tomato mosaic virus,373
+Tomato,Tomato yellow leaf curl virus,5357
+Tomato,Two spotted spider mites,2
+Tomato,Yellow curl virus,93
+Tomato,Yellow virus,238
+Wheat,Bacterial streak black chaff,117
+Wheat,Head scab,319
+Wheat,Loose smut,215
+Wheat,Powdery mildew,271
+Wheat,Rust,132
+Wheat,Septoria blotch,232
+Wheat,Stem rust,148
+Wheat,Stripe rust,358
