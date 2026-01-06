@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Image - PlantDoc</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #22c55e;
+            --dark-green: #16a34a;
+            --light-green: #86efac;
+            --accent-blue: #3b82f6;
+            --dark-text: #1e293b;
+            --light-text: #64748b;
+            --warning: #f59e0b;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #86efac 0%, #22c55e 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--dark-text);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 2em;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1em;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary {
+            background: rgba(34, 197, 94, 0.1);
+            color: var(--dark-green);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(34, 197, 94, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: white;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+        }
+
+        .main-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .upload-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .upload-title {
+            font-size: 2.5em;
+            font-weight: 800;
+            color: var(--dark-text);
+            margin-bottom: 15px;
+        }
+
+        .upload-subtitle {
+            font-size: 1.1em;
+            color: var(--light-text);
+            margin-bottom: 40px;
+        }
+
+        .upload-area {
+            border: 3px dashed rgba(34, 197, 94, 0.3);
+            border-radius: 20px;
+            padding: 60px 40px;
+            background: rgba(34, 197, 94, 0.05);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        .upload-area:hover {
+            border-color: var(--primary-green);
+            background: rgba(34, 197, 94, 0.1);
+        }
+
+        .upload-area.dragover {
+            border-color: var(--primary-green);
+            background: rgba(34, 197, 94, 0.15);
+        }
+
+        .upload-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .upload-text {
+            font-size: 1.2em;
+            color: var(--dark-text);
+            margin-bottom: 10px;
+        }
+
+        .upload-hint {
+            color: var(--light-text);
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .btn-upload {
+            padding: 15px 40px;
+            font-size: 1.1em;
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-upload:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(34, 197, 94, 0.4);
+        }
+
+        .btn-upload:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .preview-section {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .preview-image {
+            max-width: 400px;
+            max-height: 400px;
+            border-radius: 15px;
+            margin: 0 auto 20px;
+            display: block;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .results-section {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .result-card {
+            background: rgba(34, 197, 94, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            border: 2px solid rgba(34, 197, 94, 0.1);
+        }
+
+        .result-card.warning {
+            background: rgba(251, 191, 36, 0.05);
+            border-color: rgba(251, 191, 36, 0.2);
+        }
+
+        .result-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .result-icon {
+            font-size: 2.5em;
+        }
+
+        .result-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+
+        .disease-name {
+            font-size: 1.8em;
+            font-weight: 800;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+        }
+
+        .disease-name.warning {
+            color: var(--warning);
+        }
+
+        .confidence-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(34, 197, 94, 0.15);
+            color: var(--dark-green);
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .health-status {
+            padding: 15px 25px;
+            border-radius: 12px;
+            font-size: 1.1em;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .health-status.healthy {
+            background: rgba(34, 197, 94, 0.15);
+            color: var(--dark-green);
+        }
+
+        .health-status.diseased {
+            background: rgba(251, 191, 36, 0.15);
+            color: #d97706;
+        }
+
+        .treatment-section {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .section-title {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .description {
+            color: var(--light-text);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .symptom-list, .treatment-list, .prevention-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .symptom-list li, .treatment-list li, .prevention-list li {
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            background: rgba(34, 197, 94, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-green);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            display: none;
+        }
+
+        .spinner {
+            border: 4px solid rgba(34, 197, 94, 0.2);
+            border-top: 4px solid var(--primary-green);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 1024px) {
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .upload-title {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="/" class="logo">
+                <span class="logo-icon">🌿</span>
+                <span>PlantDocBot</span>
+            </a>
+            <div class="nav-buttons">
+                <a href="/" class="btn btn-secondary">Home</a>
+                <a href="/upload" class="btn btn-primary">Upload</a>
+                <a href="/chat" class="btn btn-secondary">Chat</a>
+                <a href="/about" class="btn btn-secondary">About</a>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="upload-section">
+                <h1 class="upload-title">🌿 Plant Disease Detection</h1>
+                <p class="upload-subtitle">Upload a clear image of the affected plant leaf for instant diagnosis</p>
+
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📸</div>
+                    <div class="upload-text">Click to upload or drag and drop</div>
+                    <div class="upload-hint">Supports JPG, PNG (max 16MB)</div>
+                </div>
+
+                <input type="file" id="fileInput" class="file-input" accept="image/*">
+                
+                <div class="preview-section" id="previewSection">
+                    <img id="previewImage" class="preview-image" alt="Preview">
+                    <button class="btn-upload" id="analyzeBtn">🔍 Analyze Plant</button>
+                </div>
+            </div>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Analyzing your plant... Please wait</p>
+            </div>
+
+            <div class="results-section" id="resultsSection">
+                <div class="results-grid">
+                    <div class="result-card" id="resultCard">
+                        <div class="result-header">
+                            <span class="result-icon" id="resultIcon">🌿</span>
+                            <div>
+                                <div class="result-title">Diagnosis Result</div>
+                            </div>
+                        </div>
+                        
+                        <div class="disease-name" id="diseaseName">-</div>
+                        <div class="confidence-badge" id="confidenceBadge">Confidence: -</div>
+                        <div class="health-status" id="healthStatus">-</div>
+                    </div>
+
+                    <div class="result-card">
+                        <div class="treatment-section">
+                            <div class="section-title">
+                                📋 Description
+                            </div>
+                            <p class="description" id="description">-</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-grid" style="margin-top: 20px;">
+                    <div class="result-card">
+                        <div class="section-title">
+                            🔍 Symptoms
+                        </div>
+                        <ul class="symptom-list" id="symptomsList"></ul>
+                    </div>
+
+                    <div class="result-card">
+                        <div class="section-title">
+                            💊 Treatment
+                        </div>
+                        <ul class="treatment-list" id="treatmentList"></ul>
+                    </div>
+                </div>
+
+                <div class="result-card" style="margin-top: 20px;">
+                    <div class="section-title">
+                        🛡️ Prevention
+                    </div>
+                    <ul class="prevention-list" id="preventionList"></ul>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <button class="btn-upload" onclick="location.reload()">📷 Analyze Another Plant</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const previewSection = document.getElementById('previewSection');
+        const previewImage = document.getElementById('previewImage');
+        const analyzeBtn = document.getElementById('analyzeBtn');
+        const loading = document.getElementById('loading');
+        const resultsSection = document.getElementById('resultsSection');
+
+        let selectedFile = null;
+
+        // Click to upload
+        uploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        // File selection
+        fileInput.addEventListener('change', (e) => {
+            handleFile(e.target.files[0]);
+        });
+
+        // Drag and drop
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            handleFile(e.dataTransfer.files[0]);
+        });
+
+        function handleFile(file) {
+            if (!file || !file.type.startsWith('image/')) {
+                alert('Please select a valid image file');
+                return;
+            }
+
+            selectedFile = file;
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                previewImage.src = e.target.result;
+                previewSection.style.display = 'block';
+                resultsSection.style.display = 'none';
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Analyze button
+        analyzeBtn.addEventListener('click', async () => {
+            if (!selectedFile) return;
+
+            loading.style.display = 'block';
+            resultsSection.style.display = 'none';
+            analyzeBtn.disabled = true;
+
+            const formData = new FormData();
+            formData.append('image', selectedFile);
+
+            try {
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    displayResults(data);
+                } else {
+                    alert('Error: ' + (data.error || 'Failed to analyze image'));
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            } finally {
+                loading.style.display = 'none';
+                analyzeBtn.disabled = false;
+            }
+        });
+
+        function displayResults(data) {
+            const isHealthy = data.is_healthy;
+            
+            // Update result card
+            document.getElementById('resultIcon').textContent = isHealthy ? '✅' : '⚠️';
+            document.getElementById('diseaseName').textContent = data.disease;
+            document.getElementById('diseaseName').className = isHealthy ? 'disease-name' : 'disease-name warning';
+            document.getElementById('confidenceBadge').textContent = `Confidence: ${data.confidence}%`;
+            
+            const healthStatus = document.getElementById('healthStatus');
+            healthStatus.textContent = isHealthy ? '✓ Plant is Healthy' : '⚠ Requires Attention';
+            healthStatus.className = isHealthy ? 'health-status healthy' : 'health-status diseased';
+            
+            const resultCard = document.getElementById('resultCard');
+            resultCard.className = isHealthy ? 'result-card' : 'result-card warning';
+
+            // Update treatment info
+            document.getElementById('description').textContent = data.treatment.description;
+
+            // Update symptoms
+            const symptomsList = document.getElementById('symptomsList');
+            symptomsList.innerHTML = '';
+            data.treatment.symptoms.forEach(symptom => {
+                const li = document.createElement('li');
+                li.textContent = symptom;
+                symptomsList.appendChild(li);
+            });
+
+            // Update treatment
+            const treatmentList = document.getElementById('treatmentList');
+            treatmentList.innerHTML = '';
+            data.treatment.treatment.forEach(treatment => {
+                const li = document.createElement('li');
+                li.textContent = treatment;
+                treatmentList.appendChild(li);
+            });
+
+            // Update prevention
+            const preventionList = document.getElementById('preventionList');
+            preventionList.innerHTML = '';
+            data.treatment.prevention.forEach(prevention => {
+                const li = document.createElement('li');
+                li.textContent = prevention;
+                preventionList.appendChild(li);
+            });
+
+            resultsSection.style.display = 'block';
+            resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    </script>
+</body>
+</html>

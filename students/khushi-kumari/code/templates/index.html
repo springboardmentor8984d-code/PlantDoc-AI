@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlantDocBot - AI Plant Disease Detection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #22c55e;
+            --dark-green: #16a34a;
+            --light-green: #86efac;
+            --accent-blue: #3b82f6;
+            --dark-text: #1e293b;
+            --light-text: #64748b;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #86efac 0%, #22c55e 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Enhanced Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #22c55e, #3b82f6, #22c55e);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite linear;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        /* Enhanced Logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            position: relative;
+            padding: 10px 0;
+        }
+
+        .logo-icon {
+            font-size: 2.5em;
+            animation: float 3s ease-in-out infinite;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg); 
+            }
+            25% { 
+                transform: translateY(-5px) rotate(-5deg); 
+            }
+            75% { 
+                transform: translateY(-5px) rotate(5deg); 
+            }
+        }
+
+        .logo-text {
+            font-size: 2.2em;
+            font-weight: 900;
+            background: linear-gradient(135deg, #1e293b 0%, #16a34a 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            letter-spacing: -0.5px;
+            padding: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .logo-text::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #22c55e, transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo:hover .logo-text::after {
+            opacity: 1;
+        }
+
+        .logo:hover .logo-text {
+            transform: scale(1.02);
+        }
+
+        /* Enhanced Navigation */
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            flex: 1;
+            justify-content: flex-end;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 14px 35px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1em;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-secondary {
+            background: rgba(34, 197, 94, 0.1);
+            color: var(--dark-green);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(34, 197, 94, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(34, 197, 94, 0.3);
+            border-color: var(--primary-green);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: white;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(34, 197, 94, 0.4);
+            background: linear-gradient(135deg, var(--dark-green), var(--primary-green));
+        }
+
+        .nav-stats {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+            padding-right: 20px;
+            border-right: 2px solid rgba(34, 197, 94, 0.1);
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .stat-value {
+            font-size: 1.4em;
+            font-weight: 800;
+            color: var(--dark-green);
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.85em;
+            color: var(--light-text);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Rest of the existing CSS remains the same */
+        .main-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            animation: slideIn 0.6s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .hero-title {
+            font-size: 3em;
+            font-weight: 800;
+            color: var(--dark-text);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2em;
+            color: var(--light-text);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 20px;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .action-btn.green {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: white;
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+        }
+
+        .action-btn.blue {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.05em;
+            color: var(--dark-text);
+        }
+
+        .feature-icon {
+            color: var(--primary-green);
+            font-size: 1.2em;
+        }
+
+        .stats-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .stats-card {
+            background: rgba(34, 197, 94, 0.05);
+            border-radius: 20px;
+            padding: 25px;
+            border: 2px solid rgba(34, 197, 94, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stats-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.2);
+            border-color: var(--primary-green);
+        }
+
+        .stats-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .stats-icon {
+            font-size: 1.8em;
+        }
+
+        .stats-title {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+
+        .stats-value {
+            font-size: 2.5em;
+            font-weight: 800;
+            color: var(--primary-green);
+            margin-bottom: 5px;
+        }
+
+        .stats-label {
+            color: var(--light-text);
+            font-size: 0.95em;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(34, 197, 94, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-green), var(--dark-green));
+            border-radius: 10px;
+            transition: width 1s ease;
+        }
+
+        @media (max-width: 1200px) {
+            .nav-stats {
+                display: none;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 2.5em;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .nav-buttons {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .btn {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+
+            .logo-text {
+                font-size: 1.8em;
+            }
+
+            .logo-icon {
+                font-size: 2em;
+            }
+
+            body {
+                padding: 10px;
+            }
+
+            .hero-title {
+                font-size: 2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .btn {
+                text-align: center;
+            }
+            
+            .logo-text {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Enhanced Header -->
+        <div class="header">
+            <a href="/" class="logo">
+                <span class="logo-icon">🌿</span>
+                <span class="logo-text">PlantDocBot</span>
+            </a>
+            
+            <div class="nav-container">
+                <div class="nav-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">38+</span>
+                        <span class="stat-label">Diseases</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">99%</span>
+                        <span class="stat-label">Accuracy</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">AI</span>
+                        <span class="stat-label">Powered</span>
+                    </div>
+                </div>
+                
+                <div class="nav-buttons">
+                    <a href="/" class="btn btn-primary">Home</a>
+                    <a href="/upload" class="btn btn-secondary">Upload</a>
+                    <a href="/chat" class="btn btn-secondary">Chat</a>
+                    <a href="/about" class="btn btn-secondary">About</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="hero-grid">
+                <div class="hero-section">
+                    <h1 class="hero-title">Welcome to PlantDocBot — Protect your plants 🌱</h1>
+                    <p class="hero-subtitle">
+                        Upload a photo or chat with our smart AI assistant to instantly identify plant diseases and get expert treatment recommendations.
+                    </p>
+
+                    <div class="action-buttons">
+                        <a href="/upload" class="action-btn green">
+                            📷 Upload Image
+                        </a>
+                        <a href="/chat" class="action-btn blue">
+                            💬 Start Chat
+                        </a>
+                    </div>
+
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>MobileNetV2 CNN for accurate detection</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>DistilBERT NLP for symptom analysis</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Comprehensive treatment database</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>38 disease classes supported</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-section">
+                    <div class="stats-card">
+                        <div class="stats-header">
+                            <span class="stats-icon">🎯</span>
+                            <span class="stats-title">AI Model</span>
+                        </div>
+                        <div class="stats-value">MobileNetV2</div>
+                        <div class="stats-label">Deep Learning CNN</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 90%"></div>
+                        </div>
+                    </div>
+
+                    <div class="stats-card">
+                        <div class="stats-header">
+                            <span class="stats-icon">🦠</span>
+                            <span class="stats-title">Disease Classes</span>
+                        </div>
+                        <div class="stats-value">38</div>
+                        <div class="stats-label">Apple, Tomato, Corn, Grape & more</div>
+                    </div>
+
+                    <div class="stats-card">
+                        <div class="stats-header">
+                            <span class="stats-icon">💊</span>
+                            <span class="stats-title">Treatment Database</span>
+                        </div>
+                        <div class="stats-value">100%</div>
+                        <div class="stats-label">Complete care guides</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animate progress bars on load
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.progress-fill').forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 300);
+            });
+            
+            // Add hover effect to logo
+            const logo = document.querySelector('.logo');
+            logo.addEventListener('mouseenter', () => {
+                logo.style.transform = 'scale(1.02)';
+            });
+            
+            logo.addEventListener('mouseleave', () => {
+                logo.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

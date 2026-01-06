@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - PlantDoc</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #22c55e;
+            --dark-green: #16a34a;
+            --light-green: #86efac;
+            --accent-blue: #3b82f6;
+            --dark-text: #1e293b;
+            --light-text: #64748b;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #86efac 0%, #22c55e 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--dark-text);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 2em;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1em;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary {
+            background: rgba(34, 197, 94, 0.1);
+            color: var(--dark-green);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(34, 197, 94, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: white;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+        }
+
+        .main-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .about-title {
+            font-size: 3em;
+            font-weight: 800;
+            color: var(--dark-text);
+            margin-bottom: 15px;
+        }
+
+        .about-subtitle {
+            font-size: 1.2em;
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .about-section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-icon {
+            font-size: 1.2em;
+        }
+
+        .section-content {
+            font-size: 1.1em;
+            color: var(--light-text);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .feature-card {
+            background: rgba(34, 197, 94, 0.05);
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid rgba(34, 197, 94, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.2);
+            border-color: var(--primary-green);
+        }
+
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 10px;
+        }
+
+        .feature-description {
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .tech-badge {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: white;
+            border-radius: 25px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 30px;
+            background: rgba(34, 197, 94, 0.05);
+            border-radius: 15px;
+            border: 2px solid rgba(34, 197, 94, 0.1);
+        }
+
+        .stat-value {
+            font-size: 3em;
+            font-weight: 800;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: var(--light-text);
+            font-size: 1.1em;
+        }
+
+        .developer-section {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05));
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .developer-name {
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 10px;
+        }
+
+        .developer-role {
+            font-size: 1.2em;
+            color: var(--light-text);
+            margin-bottom: 5px;
+        }
+
+        .developer-company {
+            font-size: 1.1em;
+            color: var(--primary-green);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .main-content {
+                padding: 30px 20px;
+            }
+
+            .about-title {
+                font-size: 2em;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="/" class="logo">
+                <span class="logo-icon">🌿</span>
+                <span>PlantDocBot</span>
+            </a>
+            <div class="nav-buttons">
+                <a href="/" class="btn btn-secondary">Home</a>
+                <a href="/upload" class="btn btn-secondary">Upload</a>
+                <a href="/chat" class="btn btn-secondary">Chat</a>
+                <a href="/about" class="btn btn-primary">About</a>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="about-header">
+                <h1 class="about-title">🌿 About PlantDocBot</h1>
+                <p class="about-subtitle">
+                    An AI-powered plant disease detection system that helps farmers and gardeners 
+                    identify and treat plant diseases quickly and accurately.
+                </p>
+            </div>
+
+            <div class="about-section">
+                <h2 class="section-title">
+                    <span class="section-icon">🎯</span>
+                    Our Mission
+                </h2>
+                <p class="section-content">
+                    PlantDocBot aims to make plant disease diagnosis accessible to everyone, from small-scale 
+                    farmers to home gardeners. By leveraging artificial intelligence and deep learning, 
+                    we provide instant, accurate diagnoses and comprehensive treatment recommendations 
+                    to help protect your plants and improve agricultural outcomes.
+                </p>
+            </div>
+
+            <div class="about-section">
+                <h2 class="section-title">
+                    <span class="section-icon">✨</span>
+                    Key Features
+                </h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <div class="feature-title">AI-Powered Detection</div>
+                        <div class="feature-description">
+                            Uses MobileNetV2 CNN architecture trained on thousands of plant disease images 
+                            for accurate identification.
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">💬</div>
+                        <div class="feature-title">Natural Language Chat</div>
+                        <div class="feature-description">
+                            DistilBERT-powered chatbot that understands symptom descriptions in plain English 
+                            and provides instant diagnoses.
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">📸</div>
+                        <div class="feature-title">Image Upload</div>
+                        <div class="feature-description">
+                            Simply upload a photo of the affected plant leaf, and our AI will analyze it 
+                            within seconds.
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">💊</div>
+                        <div class="feature-title">Treatment Guides</div>
+                        <div class="feature-description">
+                            Comprehensive treatment recommendations including symptoms, prevention methods, 
+                            and step-by-step care instructions.
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🌍</div>
+                        <div class="feature-title">Multiple Crops</div>
+                        <div class="feature-description">
+                            Supports 38 disease classes across various crops including tomatoes, apples, 
+                            grapes, corn, potatoes, and more.
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <div class="feature-title">Real-time Analysis</div>
+                        <div class="feature-description">
+                            Fast inference time ensures you get results instantly, helping you take 
+                            action quickly to save your plants.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2 class="section-title">
+                    <span class="section-icon">🔧</span>
+                    Technology Stack
+                </h2>
+                <p class="section-content">
+                    PlantDoc is built using state-of-the-art technologies and frameworks:
+                </p>
+                <div class="tech-stack">
+                    <div class="tech-badge">🐍 Python</div>
+                    <div class="tech-badge">🔥 PyTorch</div>
+                    <div class="tech-badge">🌐 Flask</div>
+                    <div class="tech-badge">🧠 MobileNetV2</div>
+                    <div class="tech-badge">🤗 DistilBERT</div>
+                    <div class="tech-badge">📊 TorchVision</div>
+                    <div class="tech-badge">🎨 HTML/CSS/JS</div>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2 class="section-title">
+                    <span class="section-icon">📊</span>
+                    By The Numbers
+                </h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">38</div>
+                        <div class="stat-label">Disease Classes</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">10+</div>
+                        <div class="stat-label">Crop Types</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">2</div>
+                        <div class="stat-label">AI Models</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">100%</div>
+                        <div class="stat-label">Treatment Coverage</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2 class="section-title">
+                    <span class="section-icon">👨‍💻</span>
+                    Developer
+                </h2>
+                <div class="developer-section">
+                    <div class="developer-name">Khushi</div>
+                    <div class="developer-role">AI/ML Developer</div>
+                    <div class="developer-company">Infosys Virtual Internship 6.0 | AI Domain</div>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2 class="section-title">
+                    <span class="section-icon">🚀</span>
+                    How It Works
+                </h2>
+                <p class="section-content">
+                    <strong>1. Image Upload:</strong> Upload a clear photo of the affected plant leaf or use our chat interface to describe symptoms.<br><br>
+                    <strong>2. AI Analysis:</strong> Our MobileNetV2 CNN or DistilBERT NLP model processes the input and identifies the disease.<br><br>
+                    <strong>3. Get Results:</strong> Receive instant diagnosis with confidence scores, detailed symptoms, and treatment recommendations.<br><br>
+                    <strong>4. Take Action:</strong> Follow the provided treatment guidelines to protect your plants and prevent further spread.
+                </p>
+            </div>
+
+            <div class="about-section" style="text-align: center;">
+                <h2 class="section-title" style="justify-content: center;">
+                    <span class="section-icon">🌱</span>
+                    Start Protecting Your Plants Today
+                </h2>
+                <p class="section-content">
+                    Try PlantDocBot now and experience the power of AI in agriculture!
+                </p>
+                <div style="display: flex; gap: 20px; justify-content: center; margin-top: 30px;">
+                    <a href="/upload" class="btn btn-primary" style="padding: 15px 40px; font-size: 1.1em;">
+                        📷 Upload Image
+                    </a>
+                    <a href="/chat" class="btn btn-secondary" style="padding: 15px 40px; font-size: 1.1em;">
+                        💬 Start Chat
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
