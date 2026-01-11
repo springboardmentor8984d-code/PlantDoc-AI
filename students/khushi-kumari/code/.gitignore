@@ -1,0 +1,224 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+ENV/
+env/
+.venv
+env.bak/
+venv.bak/
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# PyTorch Models (large files)
+# Comment out if you want to include your trained model
+# best_model.pth
+# *.pth
+# *.pt
+# *.ckpt
+
+# Dataset (too large for Git)
+PlantDoc-Dataset/
+dataset/
+data/
+Train/
+test/
+*.jpg
+*.jpeg
+*.png
+*.gif
+# Exception: Keep screenshots
+!screenshots/*.png
+!screenshots/*.jpg
+!static/images/*.png
+!static/images/*.jpg
+
+# Logs and Databases
+*.log
+*.sql
+*.sqlite
+*.sqlite3
+*.db
+
+# OS Files
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Training Outputs
+confusion_matrix.png
+training_history.png
+*.csv
+checkpoints/
+
+# Temporary Files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Flask
+instance/
+.webassets-cache
+.flask_session/
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
+# Generated Files
+# Uncomment if you don't want to track these
+# class_names.json
+# dataset_config.txt
+
+# Backup Files
+*.bak
+*.backup
+*.old
+
+# Archive folder (keep structure but not contents)
+archive/*
+!archive/.gitkeep
+
+# Test Results
+test_results/
+*_test_results.json
+
+# Coverage Reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pytest
+.pytest_cache/
+
+# Documentation builds
+docs/_build/
+site/
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath
+*.sage.py
+
+# Spyder
+.spyderproject
+.spyproject
+
+# Rope
+.ropeproject
+
+# mkdocs
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre
+.pyre/
+
+# Compiled translations
+*.mo
+*.pot
+
+# Django
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask
+instance/
+.webassets-cache
+
+# Scrapy
+.scrapy
+
+# Sphinx
+docs/_build/
+
+# PyBuilder
+target/
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# PEP 582
+__pypackages__/
+
+# Certificates
+*.pem
+*.key
+*.crt
+
+# secrets
+secrets.json
+credentials.json
+
+# Large model files (use Git LFS if needed)
+*.h5
+*.pkl
+*.pickle
+*.joblib
+
+# Node modules (if using any JS tools)
+node_modules/
+package-lock.json
+
+# Build artifacts
+build/
+dist/
+*.egg-info/

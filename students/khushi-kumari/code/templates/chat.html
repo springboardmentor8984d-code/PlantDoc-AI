@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat - PlantDoc</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #22c55e;
+            --dark-green: #16a34a;
+            --light-green: #86efac;
+            --accent-blue: #3b82f6;
+            --dark-text: #1e293b;
+            --light-text: #64748b;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #86efac 0%, #22c55e 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--dark-text);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 2em;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1em;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary {
+            background: rgba(34, 197, 94, 0.1);
+            color: var(--dark-green);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(34, 197, 94, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: white;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+        }
+
+        .chat-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            height: calc(100vh - 180px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            padding: 25px 30px;
+            border-bottom: 2px solid rgba(34, 197, 94, 0.1);
+        }
+
+        .chat-title {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 5px;
+        }
+
+        .chat-subtitle {
+            color: var(--light-text);
+            font-size: 0.95em;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .message {
+            display: flex;
+            gap: 15px;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.user {
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            flex-shrink: 0;
+        }
+
+        .message.bot .message-avatar {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+        }
+
+        .message.user .message-avatar {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
+
+        .message-content {
+            max-width: 70%;
+            padding: 18px 22px;
+            border-radius: 18px;
+            line-height: 1.6;
+        }
+
+        .message.bot .message-content {
+            background: rgba(34, 197, 94, 0.1);
+            color: var(--dark-text);
+            border-bottom-left-radius: 4px;
+        }
+
+        .message.user .message-content {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .diagnosis-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 15px;
+            border: 2px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .diagnosis-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(34, 197, 94, 0.1);
+        }
+
+        .diagnosis-icon {
+            font-size: 2em;
+        }
+
+        .diagnosis-disease {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: var(--primary-green);
+        }
+
+        .diagnosis-confidence {
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(34, 197, 94, 0.15);
+            color: var(--dark-green);
+            border-radius: 15px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        .diagnosis-section {
+            margin-top: 15px;
+        }
+
+        .diagnosis-label {
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .diagnosis-text {
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+
+        .diagnosis-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .diagnosis-list li {
+            padding: 10px 15px;
+            background: rgba(34, 197, 94, 0.05);
+            border-radius: 8px;
+            margin-bottom: 8px;
+            border-left: 3px solid var(--primary-green);
+        }
+
+        .chat-input-area {
+            padding: 25px 30px;
+            border-top: 2px solid rgba(34, 197, 94, 0.1);
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .input-container {
+            display: flex;
+            gap: 15px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid rgba(34, 197, 94, 0.2);
+            border-radius: 15px;
+            font-size: 1em;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.1);
+        }
+
+        .send-button {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+        }
+
+        .send-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+        }
+
+        .send-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .typing-indicator {
+            display: none;
+            gap: 5px;
+            padding: 15px 20px;
+        }
+
+        .typing-indicator.active {
+            display: flex;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--primary-green);
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-10px); }
+        }
+
+        .welcome-message {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--light-text);
+        }
+
+        .welcome-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .welcome-title {
+            font-size: 1.5em;
+            color: var(--dark-text);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .suggestions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 25px;
+        }
+
+        .suggestion-chip {
+            padding: 10px 20px;
+            background: rgba(34, 197, 94, 0.1);
+            color: var(--dark-green);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .suggestion-chip:hover {
+            background: rgba(34, 197, 94, 0.2);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .message-content {
+                max-width: 85%;
+            }
+
+            .chat-container {
+                height: calc(100vh - 220px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="/" class="logo">
+                <span class="logo-icon">🌿</span>
+                <span>PlantDocBot</span>
+            </a>
+            <div class="nav-buttons">
+                <a href="/" class="btn btn-secondary">Home</a>
+                <a href="/upload" class="btn btn-secondary">Upload</a>
+                <a href="/chat" class="btn btn-primary">Chat</a>
+                <a href="/about" class="btn btn-secondary">About</a>
+            </div>
+        </div>
+
+        <div class="chat-container">
+            <div class="chat-header">
+                <div class="chat-title">🤖 AI Plant Health Assistant</div>
+                <div class="chat-subtitle">Describe your plant's symptoms for instant diagnosis</div>
+            </div>
+
+            <div class="chat-messages" id="chatMessages">
+                <div class="welcome-message">
+                    <div class="welcome-icon">🌱</div>
+                    <div class="welcome-title">Welcome! I'm here to help diagnose plant diseases</div>
+                    <p>Describe what you're seeing on your plant, and I'll provide a diagnosis with treatment recommendations.</p>
+                    
+                    <div class="suggestions">
+                        <div class="suggestion-chip" onclick="sendSuggestion('My tomato leaves have brown spots with rings')">
+                            Brown spots on tomato leaves
+                        </div>
+                        <div class="suggestion-chip" onclick="sendSuggestion('White powdery substance on grape leaves')">
+                            White powder on grapes
+                        </div>
+                        <div class="suggestion-chip" onclick="sendSuggestion('Corn leaves turning yellow with rust colored spots')">
+                            Rust spots on corn
+                        </div>
+                        <div class="suggestion-chip" onclick="sendSuggestion('Apple fruit has black scabby lesions')">
+                            Black lesions on apples
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <div class="input-container">
+                    <input 
+                        type="text" 
+                        class="chat-input" 
+                        id="chatInput" 
+                        placeholder="Describe your plant's symptoms..."
+                        autocomplete="off"
+                    >
+                    <button class="send-button" id="sendButton">
+                        Send 📤
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const sendButton = document.getElementById('sendButton');
+
+        let conversationStarted = false;
+
+        // Handle send button
+        sendButton.addEventListener('click', sendMessage);
+
+        // Handle enter key
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        function sendSuggestion(text) {
+            chatInput.value = text;
+            sendMessage();
+        }
+
+        async function sendMessage() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+
+            // Clear welcome message on first interaction
+            if (!conversationStarted) {
+                chatMessages.innerHTML = '';
+                conversationStarted = true;
+            }
+
+            // Add user message
+            addMessage('user', message);
+            chatInput.value = '';
+            sendButton.disabled = true;
+
+            // Show typing indicator
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message bot';
+            typingDiv.innerHTML = `
+                <div class="message-avatar">🤖</div>
+                <div class="message-content">
+                    <div class="typing-indicator active">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>
+                </div>
+            `;
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            try {
+                const response = await fetch('/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ message })
+                });
+
+                const data = await response.json();
+                typingDiv.remove();
+
+                if (data.success) {
+                    addDiagnosisMessage(data);
+                } else {
+                    addMessage('bot', 'Sorry, I encountered an error analyzing your symptoms. Please try again.');
+                }
+            } catch (error) {
+                typingDiv.remove();
+                addMessage('bot', 'Sorry, something went wrong. Please try again.');
+            } finally {
+                sendButton.disabled = false;
+                chatInput.focus();
+            }
+        }
+
+        function addMessage(type, content) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+            
+            const avatar = type === 'bot' ? '🤖' : '👤';
+            
+            messageDiv.innerHTML = `
+                <div class="message-avatar">${avatar}</div>
+                <div class="message-content">${escapeHtml(content)}</div>
+            `;
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function addDiagnosisMessage(data) {
+            const isHealthy = data.is_healthy;
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message bot';
+            
+            const symptomsHtml = data.treatment.symptoms
+                .map(s => `<li>${escapeHtml(s)}</li>`)
+                .join('');
+            
+            const treatmentHtml = data.treatment.treatment
+                .map(t => `<li>${escapeHtml(t)}</li>`)
+                .join('');
+            
+            const preventionHtml = data.treatment.prevention
+                .map(p => `<li>${escapeHtml(p)}</li>`)
+                .join('');
+
+            messageDiv.innerHTML = `
+                <div class="message-avatar">🤖</div>
+                <div class="message-content">
+                    <div>Based on your description, here's my diagnosis:</div>
+                    
+                    <div class="diagnosis-card">
+                        <div class="diagnosis-header">
+                            <span class="diagnosis-icon">${isHealthy ? '✅' : '⚠️'}</span>
+                            <div>
+                                <div class="diagnosis-disease">${escapeHtml(data.disease)}</div>
+                                <div class="diagnosis-confidence">Confidence: ${data.confidence}%</div>
+                            </div>
+                        </div>
+
+                        <div class="diagnosis-section">
+                            <div class="diagnosis-label">📋 Description</div>
+                            <div class="diagnosis-text">${escapeHtml(data.treatment.description)}</div>
+                        </div>
+
+                        <div class="diagnosis-section">
+                            <div class="diagnosis-label">🔍 Symptoms</div>
+                            <ul class="diagnosis-list">${symptomsHtml}</ul>
+                        </div>
+
+                        <div class="diagnosis-section">
+                            <div class="diagnosis-label">💊 Treatment</div>
+                            <ul class="diagnosis-list">${treatmentHtml}</ul>
+                        </div>
+
+                        <div class="diagnosis-section">
+                            <div class="diagnosis-label">🛡️ Prevention</div>
+                            <ul class="diagnosis-list">${preventionHtml}</ul>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Focus input on load
+        window.addEventListener('load', () => {
+            chatInput.focus();
+        });
+    </script>
+</body>
+</html>
